@@ -1,0 +1,43 @@
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+   <span>ATD Sensor </span>
+    <div class="spacer"></div>
+  
+</div>
+
+<div class="content" role="main">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Bit Stream</mat-label>
+      <input type="text" matInput [formControl]="bitStreamFormControl" [errorStateMatcher]="matcher"
+             placeholder="Ex. 010101011">
+      <mat-hint>Bit Stream consist 9 bit either 0 or 1 </mat-hint>
+      <mat-error *ngIf="bitStreamFormControl.hasError('valid BitStream') && !bitStreamFormControl.hasError('required')">
+        Please enter a valid Bitstream 
+      </mat-error>
+      <mat-error *ngIf="bitStreamFormControl.hasError('required')">
+       Bitstream  is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </form>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="addBitStreamFn()">Add BitStream</button>
+  </div>
+  <!-- <canvas id="myChart" height="400" width="500">
+  </canvas> -->
+  
+</div>
+<mat-grid-list cols="2" rowHeight="400px">
+  <mat-grid-tile>
+    <app-chart-component [node]="node"></app-chart-component>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <app-table-component class="table" [data]="dataSource"></app-table-component>
+  
+  </mat-grid-tile>
+ 
+</mat-grid-list>
+
+<!-- <router-outlet></router-outlet> -->
